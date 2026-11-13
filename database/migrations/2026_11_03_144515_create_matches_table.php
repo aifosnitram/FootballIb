@@ -17,8 +17,7 @@ return new class extends Migration
             $table->time('matchHour');
             $table->integer(('totalScore'));
             $table->integer('countScore');
-            $table->
-            $table->foreign('matchday_id')->constrained()->onDelete('restrict');
+            $table->foreignId('matchday_id')->constrained('matchdays')->onDelete('restrict');
             $table->timestamps();
         });
     }
