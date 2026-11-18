@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('match_referee', function (Blueprint $table) {
+        Schema::create('event_referee', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('event_id')->constrained()->onUpdate('restrict')->onDelete('restrict');
+            $table->foreignId('referee_id')->constrained()->onUpdate('restrict')->onDelete('restrict');
             $table->timestamps();
         });
     }
@@ -22,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('match_referee');
+        Schema::dropIfExists('event_referee');
     }
 };

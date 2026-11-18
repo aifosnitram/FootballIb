@@ -11,14 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('matches', function (Blueprint $table) {
+        Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->date('dayOfMatch');
             $table->time('matchHour');
             $table->integer(('totalScore'));
             $table->integer('countScore');
-            $table->
-            $table->foreign('matchday_id')->constrained()->onDelete('restrict');
+            $table->foreignId('local_team_id')->constrained('teams')->onUpdate('restrict')->onDelete('restrict');
+            $table->foreignId('visitor_team_id')->constrained('teams')->onUpdate('restrict')->onDelete('restrict');
+            $table->integer('local_team_goals');
+            $table->integer('visitor_team_goals'); 
+            $table->foreign('matchday_id')->constrained()->onUpdate('restrict')->onDelete('restrict');
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('matches');
+        Schema::dropIfExists('events');
     }
 };

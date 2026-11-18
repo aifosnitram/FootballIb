@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nickname');
             $table->integer('shirtNumber')->unique();
-            $table->foreign('person_id')->constrained()->onDelete('restrict');
+            $table->foreign('person_id')->constrained()->onUpdate('restrict')->onDelete('restrict');
             $table->timestamps();
         });
     }

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('teams', function (Blueprint $table) {
             $table->id();
             $table->string('teamName');
-            $table->foreign('stadium_id')->constrained()->onDelete('restrict');
+            $table->foreign('stadium_id')->constrained()->onUpdate('restrict')->onDelete('restrict');
             $table->timestamps();
         });
     }
