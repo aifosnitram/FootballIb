@@ -21,7 +21,7 @@ return new class extends Migration
             $table->foreignId('visitor_team_id')->constrained('teams')->onUpdate('restrict')->onDelete('restrict');
             $table->integer('local_team_goals');
             $table->integer('visitor_team_goals'); 
-            $table->foreign('matchday_id')->constrained()->onUpdate('restrict')->onDelete('restrict');
+            $table->foreignId('matchday_id')->constrained()->onUpdate('restrict')->onDelete('restrict');
             $table->timestamps();
         });
     }

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('referees', function (Blueprint $table) {
             $table->id();
             $table->integer('shirtNumber')->unique();
-            $table->foreign('person_id')->constrained()->onUpdate('restrict')->onDelete('restrict');
+            $table->foreignId('person_id')->constrained()->onUpdate('restrict')->onDelete('restrict');
             $table->timestamps();
         });
     }
